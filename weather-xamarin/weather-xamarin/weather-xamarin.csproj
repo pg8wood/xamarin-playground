@@ -101,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="Features\CurrentForecast\Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -116,7 +116,7 @@
     <Compile Include="Secret\ApiKeys.cs" />
     <Compile Include="Model\ForecastResult.cs" />
     <Compile Include="Features\CurrentForecast\CurrentForecastViewController.cs" />
-    <Compile Include="Features\CurrentForecast\ViewController.designer.cs">
+    <Compile Include="Features\CurrentForecast\CurrentForecastViewController.designer.cs">
       <DependentUpon>CurrentForecastViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\CurrentForecast\CurrentForecastPresenter.cs" />

@@ -1,22 +1,35 @@
 ﻿using System;
 
 using UIKit;
-
+using weatherxamarin.Features.CurrentWeather;
 using weatherxamarin.WeatherApi;
 
 namespace weatherxamarin
 {
-    public partial class ViewController : UIViewController
+    public partial class CurrentForecastViewController : UIViewController, ICurrentForecastView
     {
-        protected ViewController(IntPtr handle) : base(handle)
+        private CurrentForecastPresenter Presenter;
+
+        protected CurrentForecastViewController(IntPtr handle) : base(handle)
         {
             // Note: this .ctor should not contain any initialization logic.
         }
 
+        public void OnReceiveForecast(CurrentForecast forecast)
+        {
+            Console.WriteLine("hit onReceiveForecast!");
+            Console.WriteLine(forecast);
+            //throw new NotImplementedException();
+        }
+
         public override void ViewDidLoad()
         {
+            Console.WriteLine("view loaded");
             base.ViewDidLoad();
             showLoadingIndicator();
+
+            Presenter = new CurrentForecastPresenter(this);
+            Presenter.start();
         }
 
         private void showLoadingIndicator() {
