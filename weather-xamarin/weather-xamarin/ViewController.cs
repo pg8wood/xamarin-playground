@@ -2,6 +2,8 @@
 
 using UIKit;
 
+using weatherxamarin.WeatherApi;
+
 namespace weatherxamarin
 {
     public partial class ViewController : UIViewController
@@ -15,6 +17,10 @@ namespace weatherxamarin
         {
             base.ViewDidLoad();
             showLoadingIndicator();
+
+            // bad do this eslewhere 
+            (new DarkSkyApi()).GetCurrentForecast(38.0293, 78.4767);
+
         }
 
         public override void DidReceiveMemoryWarning()

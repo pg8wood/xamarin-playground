@@ -6,9 +6,9 @@ namespace weatherxamarin.WeatherApi
         public long time;
         public string summary;
         public string icon;
-        public double nearestStormDistance;
+        //public double nearestStormDistance;
         public double precipIntensity;
-        public double precipIntensityError;
+        //public double precipIntensityError;
         public double precipProbability;
         public string precipType;
         public double temperature;
@@ -24,14 +24,12 @@ namespace weatherxamarin.WeatherApi
         public double visibility;
         public double ozone;
 
-        public CurrentForecast(long time, string summary, string icon, double nearestStormDistance, double precipIntensity, double precipIntensityError, double precipProbability, string precipType, double temperature, double apparentTemperature, double dewPoint, double humidity, double pressure, double windSpeed, double windGust, int windBearing, double cloudCover, int uvIndex, double visibility, double ozone)
+        public CurrentForecast(long time, string summary, string icon, double precipIntensity, double precipProbability, string precipType, double temperature, double apparentTemperature, double dewPoint, double humidity, double pressure, double windSpeed, double windGust, int windBearing, double cloudCover, int uvIndex, double visibility, double ozone)
         {
             this.time = time;
             this.summary = summary;
             this.icon = icon;
-            this.nearestStormDistance = nearestStormDistance;
             this.precipIntensity = precipIntensity;
-            this.precipIntensityError = precipIntensityError;
             this.precipProbability = precipProbability;
             this.precipType = precipType;
             this.temperature = temperature;
