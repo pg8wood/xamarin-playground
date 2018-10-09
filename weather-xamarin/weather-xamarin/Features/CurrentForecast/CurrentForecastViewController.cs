@@ -17,16 +17,6 @@ namespace weatherxamarin
         {
             base.ViewDidLoad();
             showLoadingIndicator();
-
-            // bad do this eslewhere 
-            (new DarkSkyApi()).GetCurrentForecast(38.0293, 78.4767);
-
-        }
-
-        public override void DidReceiveMemoryWarning()
-        {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
         }
 
         private void showLoadingIndicator() {

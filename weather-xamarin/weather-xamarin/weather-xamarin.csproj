@@ -96,6 +96,8 @@
     <Folder Include="Model\" />
     <Folder Include="Network\" />
     <Folder Include="Secret\" />
+    <Folder Include="Features\" />
+    <Folder Include="Features\CurrentForecast\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -109,15 +111,16 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\CurrentForecast.cs" />
     <Compile Include="Network\DarkSkyApi.cs" />
     <Compile Include="Secret\ApiKeys.cs" />
-    <Compile Include="Network\IWeatherApi.cs" />
     <Compile Include="Model\ForecastResult.cs" />
+    <Compile Include="Features\CurrentForecast\CurrentForecastViewController.cs" />
+    <Compile Include="Features\CurrentForecast\ViewController.designer.cs">
+      <DependentUpon>CurrentForecastViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\CurrentForecast\CurrentForecastPresenter.cs" />
+    <Compile Include="Features\CurrentForecast\CurrentForecastInteractor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
