@@ -15,6 +15,19 @@ namespace weatherxamarin
             // Note: this .ctor should not contain any initialization logic.
         }
 
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            Console.WriteLine("current forecast view loaded");
+
+            RenderLoadingIndicator();
+
+            Presenter = new CurrentForecastPresenter(this);
+            Presenter.start();
+        }
+
+        // ICurrentForecastView methods
+
         public void OnReceiveForecast(CurrentForecast forecast)
         {
             Console.WriteLine("hit onReceiveForecast!");
@@ -22,18 +35,7 @@ namespace weatherxamarin
             //throw new NotImplementedException();
         }
 
-        public override void ViewDidLoad()
-        {
-            base.ViewDidLoad();
-            Console.WriteLine("current forecast view loaded");
-
-            showLoadingIndicator();
-
-            Presenter = new CurrentForecastPresenter(this);
-            Presenter.start();
-        }
-
-        private void showLoadingIndicator() {
+        public void RenderLoadingIndicator() {
             var indicator = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.Gray)
             {
                 Frame = new CoreGraphics.CGRect(0, 0, 50, 50),

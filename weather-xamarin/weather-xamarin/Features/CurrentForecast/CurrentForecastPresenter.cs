@@ -7,6 +7,7 @@ namespace weatherxamarin.Features.CurrentWeather
     public interface ICurrentForecastView
     {
         void OnReceiveForecast(CurrentForecast forecast);
+        void RenderLoadingIndicator();
     }
 
     public class CurrentForecastPresenter
@@ -21,6 +22,7 @@ namespace weatherxamarin.Features.CurrentWeather
 
         public void start() {
             Interactor = new CurrentForecastInteractor();
+            View.RenderLoadingIndicator();
             processForecast();
         }
 
