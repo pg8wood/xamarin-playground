@@ -6,9 +6,7 @@ namespace weatherxamarin.WeatherApi
         public long time;
         public string summary;
         public string icon;
-        //public double nearestStormDistance;
         public double precipIntensity;
-        //public double precipIntensityError;
         public double precipProbability;
         public string precipType;
         public double temperature;
