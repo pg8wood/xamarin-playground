@@ -32,14 +32,14 @@ namespace weatherxamarin
             Presenter.start();
         }
 
-
         // ICurrentForecastView methods
 
-
-        public void RenderLoadingIndicator() {
+        public void RenderLoadingIndicator()
+        {
             Console.WriteLine("LoadingIndicator:");
             Console.WriteLine(LoadingIndicator);
-            if (LoadingIndicator == null) {
+            if (LoadingIndicator == null)
+            {
                 LoadingIndicator = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.Gray)
                 {
                     Frame = new CoreGraphics.CGRect(0, 0, 50, 50),

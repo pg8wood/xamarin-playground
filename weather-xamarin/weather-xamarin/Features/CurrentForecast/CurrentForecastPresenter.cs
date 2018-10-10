@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using weatherxamarin.Features.UserLocation;
 using weatherxamarin.WeatherApi;
 
 namespace weatherxamarin.Features.CurrentWeather
@@ -15,19 +16,22 @@ namespace weatherxamarin.Features.CurrentWeather
     {
         private ICurrentForecastView View;
         private CurrentForecastInteractor Interactor;
+        //private ILocationManager
 
         public CurrentForecastPresenter(ICurrentForecastView View)
         {
             this.View = View;
         }
 
-        public void start() {
+        public void start()
+        {
             Interactor = new CurrentForecastInteractor();
             View.RenderLoadingIndicator();
             ProcessForecast();
         }
 
-        private async void ProcessForecast() {
+        private async void ProcessForecast()
+        {
             CurrentForecast forecast = await Interactor.GetCurrentForecast();
             View.RenderWeatherSummary(forecast.icon, forecast.temperature, forecast.summary);
             View.StopLoadingIndicator();

@@ -159,6 +159,9 @@
     <Folder Include="Features\" />
     <Folder Include="Features\CurrentForecast\" />
     <Folder Include="Assets.xcassets\.imageset\" />
+    <Folder Include="Model\Forecast\" />
+    <Folder Include="Model\Location\" />
+    <Folder Include="Features\Location\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -172,16 +175,19 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Model\CurrentForecast.cs" />
     <Compile Include="Network\DarkSkyApi.cs" />
     <Compile Include="Secret\ApiKeys.cs" />
-    <Compile Include="Model\ForecastResult.cs" />
     <Compile Include="Features\CurrentForecast\CurrentForecastViewController.cs" />
     <Compile Include="Features\CurrentForecast\CurrentForecastViewController.designer.cs">
       <DependentUpon>CurrentForecastViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\CurrentForecast\CurrentForecastPresenter.cs" />
     <Compile Include="Features\CurrentForecast\CurrentForecastInteractor.cs" />
+    <Compile Include="Model\Forecast\CurrentForecast.cs" />
+    <Compile Include="Model\Forecast\ForecastResult.cs" />
+    <Compile Include="Model\Location\Location.cs" />
+    <Compile Include="Features\Location\ILocationManager.cs" />
+    <Compile Include="Features\Location\LocationInteractor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

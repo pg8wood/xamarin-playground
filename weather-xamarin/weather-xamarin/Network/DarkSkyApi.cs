@@ -11,8 +11,7 @@ namespace weatherxamarin.WeatherApi
         public static string darkSkyBaseAddress = "https://api.darksky.net/forecast";
 
         private static DarkSkyApi api;
-        private HttpClient httpClient;
-
+        private HttpClient httpClient; 
 
         public DarkSkyApi() {
             httpClient = new HttpClient();
