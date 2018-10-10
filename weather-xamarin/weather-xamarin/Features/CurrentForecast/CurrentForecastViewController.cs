@@ -30,9 +30,12 @@ namespace weatherxamarin
 
         public void OnReceiveForecast(CurrentForecast forecast)
         {
+            // Make the view even dumber than this method
+
             Console.WriteLine("hit onReceiveForecast!");
             Console.WriteLine(forecast);
-            //throw new NotImplementedException();
+
+            // TODO: update UI
         }
 
         public void RenderLoadingIndicator() {
