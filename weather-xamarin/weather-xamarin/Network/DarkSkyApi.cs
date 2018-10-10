@@ -10,7 +10,7 @@ namespace weatherxamarin.WeatherApi
     {
         public static string darkSkyBaseAddress = "https://api.darksky.net/forecast";
 
-        private static DarkSkyApi instance;
+        private static DarkSkyApi api;
         private HttpClient httpClient;
 
 
@@ -20,11 +20,11 @@ namespace weatherxamarin.WeatherApi
 
         public static DarkSkyApi Instance {
             get {
-                if (instance == null) {
-                    instance = new DarkSkyApi();
+                if (api == null) {
+                    api = new DarkSkyApi();
                 }
 
-                return Instance;
+                return api;
             }
         }
 
@@ -43,7 +43,7 @@ namespace weatherxamarin.WeatherApi
 
             Console.WriteLine($"converted object: {result.currently.summary}");
 
-            return null;
+            return result.currently;
         }
     }
 }

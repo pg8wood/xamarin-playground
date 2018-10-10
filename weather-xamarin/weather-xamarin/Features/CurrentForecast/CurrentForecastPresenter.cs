@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using weatherxamarin.WeatherApi;
 
 namespace weatherxamarin.Features.CurrentWeather
@@ -11,6 +12,7 @@ namespace weatherxamarin.Features.CurrentWeather
     public class CurrentForecastPresenter
     {
         private ICurrentForecastView View;
+        private CurrentForecastInteractor Interactor;
 
         public CurrentForecastPresenter(ICurrentForecastView View)
         {
@@ -18,12 +20,14 @@ namespace weatherxamarin.Features.CurrentWeather
         }
 
         public void start() {
-            var interactor = new CurrentForecastInteractor();
-            CurrentForecast forecast = interactor.getCurrentForecast();
-
-            // TODO call start from view and see if stuff works 
-            Console.WriteLine($"{forecast.summary}");
-
+            Interactor = new CurrentForecastInteractor();
+            processForecast();
         }
+
+        private async void processForecast() {
+            CurrentForecast forecast = await Interactor.GetCurrentForecast();
+            View.OnReceiveForecast(forecast);
+        }
+
     }
 }

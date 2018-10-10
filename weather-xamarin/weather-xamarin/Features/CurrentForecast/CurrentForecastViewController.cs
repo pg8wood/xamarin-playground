@@ -24,8 +24,9 @@ namespace weatherxamarin
 
         public override void ViewDidLoad()
         {
-            Console.WriteLine("view loaded");
             base.ViewDidLoad();
+            Console.WriteLine("current forecast view loaded");
+
             showLoadingIndicator();
 
             Presenter = new CurrentForecastPresenter(this);

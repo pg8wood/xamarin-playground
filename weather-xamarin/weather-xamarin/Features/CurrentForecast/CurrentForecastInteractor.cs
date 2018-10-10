@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using weatherxamarin.WeatherApi;
 
 namespace weatherxamarin.Features.CurrentWeather
@@ -10,9 +11,9 @@ namespace weatherxamarin.Features.CurrentWeather
         }
 
         // TODO get user's location
-        public CurrentForecast getCurrentForecast()
+        public async Task<CurrentForecast> GetCurrentForecast()
         {
-            return DarkSkyApi.Instance.GetCurrentForecast(38.0293, 78.4767).Result;
+            return await DarkSkyApi.Instance.GetCurrentForecast(38.0293, 78.4767);
         }
     }
 }
