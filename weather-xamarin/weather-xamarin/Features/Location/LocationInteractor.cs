@@ -15,15 +15,19 @@ namespace weatherxamarin.Features.UserLocation
 
         public LocationInteractor()
         {
-            LocationManager = new CLLocationManager();
-            LocationManager.Delegate = this; 
+            LocationManager = new CLLocationManager
+            {
+                Delegate = this
+            };
         }
 
-        public override void UpdatedLocation(CLLocationManager manager, CLLocation newLocation, CLLocation oldLocation)
+        //public override [Export("locationManager:didUpdateLocations:")]
+        public override void LocationsUpdated(CLLocationManager manager, CLLocation[] locations)
         {
-            base.UpdatedLocation(manager, newLocation, oldLocation);
+            Console.WriteLine("locations updated");
 
             var geocoder = new CLGeocoder();
+            var newLocation = locations[0];
 
             // TODO see if the anonymous function causes a memory leak
             geocoder.ReverseGeocodeLocation(newLocation, new CLGeocodeCompletionHandler((placemarks, error) =>
@@ -47,7 +51,10 @@ namespace weatherxamarin.Features.UserLocation
         {
             LocationManager.RequestWhenInUseAuthorization();
 
+            Console.WriteLine("requesting location...");
+
             if (CLLocationManager.Status == CLAuthorizationStatus.Denied) {
+                Console.WriteLine("location denied :(");
                 return;
             }
 

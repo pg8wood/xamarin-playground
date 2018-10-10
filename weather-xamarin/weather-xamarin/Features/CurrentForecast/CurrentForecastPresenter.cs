@@ -16,7 +16,7 @@ namespace weatherxamarin.Features.CurrentWeather
     {
         private ICurrentForecastView View;
         private CurrentForecastInteractor Interactor;
-        //private ILocationManager
+        private ILocationManager LocationInteractor;
 
         public CurrentForecastPresenter(ICurrentForecastView View)
         {
@@ -26,6 +26,18 @@ namespace weatherxamarin.Features.CurrentWeather
         public void start()
         {
             Interactor = new CurrentForecastInteractor();
+
+            /*
+             * Since LocationInteractor is an iOS-specific implementation, this
+             * line makes this presenter iOS-dependent. 
+             * 
+             * TODO: When adding Android capabilities, make the CurrentForecastPresenter
+             * an abstract class with a few concrete methods, but location-related stuff 
+             * should be abstract and implemented at a platform-specifc presenter implementation. 
+             */
+            LocationInteractor = new LocationInteractor();
+            LocationInteractor.StartUpdatingLocation();
+
             View.RenderLoadingIndicator();
             ProcessForecast();
         }
