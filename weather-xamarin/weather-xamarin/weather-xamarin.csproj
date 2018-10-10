@@ -158,6 +158,7 @@
     <Folder Include="Secret\" />
     <Folder Include="Features\" />
     <Folder Include="Features\CurrentForecast\" />
+    <Folder Include="Assets.xcassets\.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

@@ -13,8 +13,34 @@ namespace weatherxamarin
     [Register ("CurrentForecastViewController")]
     partial class CurrentForecastViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel SummaryLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel TemperatureLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView WeatherIcon { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (SummaryLabel != null) {
+                SummaryLabel.Dispose ();
+                SummaryLabel = null;
+            }
+
+            if (TemperatureLabel != null) {
+                TemperatureLabel.Dispose ();
+                TemperatureLabel = null;
+            }
+
+            if (WeatherIcon != null) {
+                WeatherIcon.Dispose ();
+                WeatherIcon = null;
+            }
         }
     }
 }

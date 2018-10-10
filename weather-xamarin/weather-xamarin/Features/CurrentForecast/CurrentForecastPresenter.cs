@@ -6,8 +6,9 @@ namespace weatherxamarin.Features.CurrentWeather
 {
     public interface ICurrentForecastView
     {
-        void OnReceiveForecast(CurrentForecast forecast);
         void RenderLoadingIndicator();
+        void RenderWeatherSummary(string iconName, double temperature, string summary);
+        void StopLoadingIndicator();
     }
 
     public class CurrentForecastPresenter
@@ -23,12 +24,13 @@ namespace weatherxamarin.Features.CurrentWeather
         public void start() {
             Interactor = new CurrentForecastInteractor();
             View.RenderLoadingIndicator();
-            processForecast();
+            ProcessForecast();
         }
 
-        private async void processForecast() {
+        private async void ProcessForecast() {
             CurrentForecast forecast = await Interactor.GetCurrentForecast();
-            View.OnReceiveForecast(forecast);
+            View.RenderWeatherSummary(forecast.icon, forecast.temperature, forecast.summary);
+            View.StopLoadingIndicator();
         }
 
     }
