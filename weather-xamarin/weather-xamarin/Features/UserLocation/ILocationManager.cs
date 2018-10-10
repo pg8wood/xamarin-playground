@@ -9,6 +9,5 @@ namespace weatherxamarin.Features.UserLocation
     public interface ILocationManager
     {
         void StartUpdatingLocation();
-        void OnLocationChanged(Location location);
     }
 }

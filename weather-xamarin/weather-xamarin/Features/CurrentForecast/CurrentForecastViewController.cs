@@ -19,9 +19,13 @@ namespace weatherxamarin
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            toggleLabelsAreHidden(true);
+        }
 
-            TemperatureLabel.Hidden = true;
-            SummaryLabel.Hidden = true;
+        private void toggleLabelsAreHidden(bool visible) {
+            CityLabel.Hidden = visible;
+            TemperatureLabel.Hidden = visible;
+            SummaryLabel.Hidden = visible;
         }
 
         public override void ViewDidAppear(bool animated)
@@ -31,8 +35,6 @@ namespace weatherxamarin
             Presenter = new CurrentForecastPresenter(this);
             Presenter.start();
         }
-
-        // ICurrentForecastView methods
 
         public void RenderLoadingIndicator()
         {
@@ -58,8 +60,7 @@ namespace weatherxamarin
             WeatherIcon.Image = UIImage.FromBundle(iconName);
             TemperatureLabel.Text = Math.Round(temperature).ToString() + "°F";
             SummaryLabel.Text = summary;
-            TemperatureLabel.Hidden = false;
-            SummaryLabel.Hidden = false;
+            toggleLabelsAreHidden(false);
         }
 
         public void StopLoadingIndicator()

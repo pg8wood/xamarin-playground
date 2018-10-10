@@ -10,8 +10,7 @@ namespace weatherxamarin.Features.CurrentWeather
         {
         }
 
-        // TODO get user's location
-        public async Task<CurrentForecast> GetCurrentForecast()
+        public async Task<CurrentForecast> GetCurrentForecast(double latitude, double longitude)
         {
             return await DarkSkyApi.Instance.GetCurrentForecast(38.0293, 78.4767);
         }

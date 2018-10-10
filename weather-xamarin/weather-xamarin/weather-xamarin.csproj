@@ -161,7 +161,7 @@
     <Folder Include="Assets.xcassets\.imageset\" />
     <Folder Include="Model\Forecast\" />
     <Folder Include="Model\Location\" />
-    <Folder Include="Features\Location\" />
+    <Folder Include="Features\UserLocation\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -186,8 +186,9 @@
     <Compile Include="Model\Forecast\CurrentForecast.cs" />
     <Compile Include="Model\Forecast\ForecastResult.cs" />
     <Compile Include="Model\Location\Location.cs" />
-    <Compile Include="Features\Location\ILocationManager.cs" />
-    <Compile Include="Features\Location\LocationInteractor.cs" />
+    <Compile Include="Features\UserLocation\ILocationManager.cs" />
+    <Compile Include="Features\UserLocation\LocationInteractor.cs" />
+    <Compile Include="Features\UserLocation\ILocationUpdateHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

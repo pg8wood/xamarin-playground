@@ -11,10 +11,13 @@ namespace weatherxamarin.Features.UserLocation
      */
     public class LocationInteractor: CLLocationManagerDelegate, ILocationManager
     {
-        private CLLocationManager LocationManager;
+        private readonly CLLocationManager LocationManager;
+        private readonly ILocationUpdateHandler Handler;
 
-        public LocationInteractor()
+        public LocationInteractor(ILocationUpdateHandler updateHandler)
         {
+            this.Handler = updateHandler;
+
             LocationManager = new CLLocationManager
             {
                 Delegate = this
@@ -38,7 +41,11 @@ namespace weatherxamarin.Features.UserLocation
                 }
 
                 Console.WriteLine($"You're in {placemarks[0].Locality}");
-                OnLocationChanged(new Location(newLocation.Coordinate.Latitude, newLocation.Coordinate.Longitude, placemarks[0].Locality));
+                Location location = new Location(newLocation.Coordinate.Latitude, 
+                                                 newLocation.Coordinate.Longitude, 
+                                                 placemarks[0].Locality);
+
+                Handler.OnLocationChanged(location);
             }));
         }
 
@@ -51,13 +58,11 @@ namespace weatherxamarin.Features.UserLocation
         {
             LocationManager.RequestWhenInUseAuthorization();
 
-            Console.WriteLine("requesting location...");
-
             if (CLLocationManager.Status == CLAuthorizationStatus.Denied) {
-                Console.WriteLine("location denied :(");
                 return;
             }
 
+            LocationManager.DistanceFilter = 8046.72; // ~5 miles to update 
             LocationManager.StartUpdatingLocation();
         }
     }

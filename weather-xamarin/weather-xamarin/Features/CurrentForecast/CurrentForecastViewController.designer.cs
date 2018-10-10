@@ -15,6 +15,10 @@ namespace weatherxamarin
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel CityLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel SummaryLabel { get; set; }
 
         [Outlet]
@@ -27,6 +31,11 @@ namespace weatherxamarin
 
         void ReleaseDesignerOutlets ()
         {
+            if (CityLabel != null) {
+                CityLabel.Dispose ();
+                CityLabel = null;
+            }
+
             if (SummaryLabel != null) {
                 SummaryLabel.Dispose ();
                 SummaryLabel = null;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using weatherxamarin.Features.UserLocation;
+using weatherxamarin.Model.UserLocation;
 using weatherxamarin.WeatherApi;
 
 namespace weatherxamarin.Features.CurrentWeather
@@ -12,7 +13,7 @@ namespace weatherxamarin.Features.CurrentWeather
         void StopLoadingIndicator();
     }
 
-    public class CurrentForecastPresenter
+    public class CurrentForecastPresenter: ILocationUpdateHandler
     {
         private ICurrentForecastView View;
         private CurrentForecastInteractor Interactor;
@@ -35,19 +36,17 @@ namespace weatherxamarin.Features.CurrentWeather
              * an abstract class with a few concrete methods, but location-related stuff 
              * should be abstract and implemented at a platform-specifc presenter implementation. 
              */
-            LocationInteractor = new LocationInteractor();
+            LocationInteractor = new LocationInteractor(this);
             LocationInteractor.StartUpdatingLocation();
 
             View.RenderLoadingIndicator();
-            ProcessForecast();
         }
 
-        private async void ProcessForecast()
+        public async void OnLocationChanged(Location location)
         {
-            CurrentForecast forecast = await Interactor.GetCurrentForecast();
+            CurrentForecast forecast = await Interactor.GetCurrentForecast(location.Latitude, location.Longitude);
             View.RenderWeatherSummary(forecast.icon, forecast.temperature, forecast.summary);
             View.StopLoadingIndicator();
         }
-
     }
 }
