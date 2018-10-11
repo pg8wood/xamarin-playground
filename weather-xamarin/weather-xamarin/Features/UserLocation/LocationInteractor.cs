@@ -27,8 +27,6 @@ namespace weatherxamarin.Features.UserLocation
         //public override [Export("locationManager:didUpdateLocations:")]
         public override void LocationsUpdated(CLLocationManager manager, CLLocation[] locations)
         {
-            Console.WriteLine("locations updated");
-
             var geocoder = new CLGeocoder();
             var newLocation = locations[0];
 
@@ -40,7 +38,6 @@ namespace weatherxamarin.Features.UserLocation
                     return;
                 }
 
-                Console.WriteLine($"You're in {placemarks[0].Locality}");
                 Location location = new Location(newLocation.Coordinate.Latitude, 
                                                  newLocation.Coordinate.Longitude, 
                                                  placemarks[0].Locality);

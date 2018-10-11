@@ -12,7 +12,7 @@ namespace weatherxamarin.Features.CurrentWeather
 
         public async Task<CurrentForecast> GetCurrentForecast(double latitude, double longitude)
         {
-            return await DarkSkyApi.Instance.GetCurrentForecast(38.0293, 78.4767);
+            return await DarkSkyApi.Instance.GetCurrentForecast(latitude, longitude);
         }
     }
 }
