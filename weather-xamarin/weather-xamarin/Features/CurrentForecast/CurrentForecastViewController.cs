@@ -10,6 +10,7 @@ namespace weatherxamarin
     {
         private CurrentForecastPresenter Presenter;
         private UIActivityIndicatorView LoadingIndicator;
+        private UIRefreshControl RefreshControl;
 
         protected CurrentForecastViewController(IntPtr handle) : base(handle)
         {
@@ -19,27 +20,26 @@ namespace weatherxamarin
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            toggleLabelsAreHidden(true);
+            CreateRefreshControl();
         }
 
-        private void toggleLabelsAreHidden(bool visible) {
+        private void CreateRefreshControl() {
+            RefreshControl = new UIRefreshControl();
+            RefreshControl.AddTarget(OnUserRefresh, UIControlEvent.ValueChanged);
+        }
+
+        private void OnUserRefresh(Object sender, EventArgs e) {
+            Presenter.OnUserRefresh();
+        }
+
+        public void RenderLabelsAreHidden(bool visible) {
             CityLabel.Hidden = visible;
             TemperatureLabel.Hidden = visible;
             SummaryLabel.Hidden = visible;
         }
 
-        public override void ViewDidAppear(bool animated)
-        {
-            base.ViewWillAppear(animated);
-
-            Presenter = new CurrentForecastPresenter(this);
-            Presenter.start();
-        }
-
         public void RenderLoadingIndicator()
         {
-            Console.WriteLine("LoadingIndicator:");
-            Console.WriteLine(LoadingIndicator);
             if (LoadingIndicator == null)
             {
                 LoadingIndicator = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.Gray)
@@ -60,7 +60,6 @@ namespace weatherxamarin
             WeatherIcon.Image = UIImage.FromBundle(iconName);
             TemperatureLabel.Text = Math.Round(temperature).ToString() + "°F";
             SummaryLabel.Text = summary;
-            toggleLabelsAreHidden(false);
         }
 
         public void StopLoadingIndicator()

@@ -9,6 +9,7 @@ namespace weatherxamarin.Features.CurrentWeather
     public interface ICurrentForecastView
     {
         void RenderLoadingIndicator();
+        void RenderLabelsAreHidden(bool hidden);
         void RenderWeatherSummary(string iconName, double temperature, string summary);
         void StopLoadingIndicator();
     }
@@ -39,7 +40,17 @@ namespace weatherxamarin.Features.CurrentWeather
             LocationInteractor = new LocationInteractor(this);
             LocationInteractor.StartUpdatingLocation();
 
+            View.RenderLabelsAreHidden(true);
             View.RenderLoadingIndicator();
+        }
+
+        public async void OnUserRefresh() {
+            View.RenderLoadingIndicator();
+
+            // TODO add routine for interactor to use last location  
+            CurrentForecast forecast = await Interactor.GetCurrentForecast(location.Latitude, location.Longitude);
+            View.RenderWeatherSummary(forecast.icon, forecast.temperature, forecast.summary);
+            View.RenderLabelsAreHidden(false);
         }
 
         public async void OnLocationChanged(Location location)
