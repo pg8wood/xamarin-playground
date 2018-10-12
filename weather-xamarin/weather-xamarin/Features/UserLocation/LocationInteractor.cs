@@ -11,6 +11,7 @@ namespace weatherxamarin.Features.UserLocation
      */
     public class LocationInteractor: CLLocationManagerDelegate, ILocationManager
     {
+        private Location CurrentLocation;
         private readonly CLLocationManager LocationManager;
         private readonly ILocationUpdateHandler Handler;
 
@@ -24,7 +25,6 @@ namespace weatherxamarin.Features.UserLocation
             };
         }
 
-        //public override [Export("locationManager:didUpdateLocations:")]
         public override void LocationsUpdated(CLLocationManager manager, CLLocation[] locations)
         {
             var geocoder = new CLGeocoder();
@@ -38,17 +38,16 @@ namespace weatherxamarin.Features.UserLocation
                     return;
                 }
 
-                Location location = new Location(newLocation.Coordinate.Latitude, 
-                                                 newLocation.Coordinate.Longitude, 
-                                                 placemarks[0].Locality);
+                CLPlacemark placemark = placemarks[0];
+                string localityName = $"{placemark.SubLocality} {placemark.Locality}";
 
+                Location location = new Location(newLocation.Coordinate.Latitude,
+                                                 newLocation.Coordinate.Longitude,
+                                                 localityName);
+
+                CurrentLocation = location;
                 Handler.OnLocationChanged(location);
             }));
-        }
-
-        public void OnLocationChanged(Location location)
-        {
-            Console.WriteLine($"You're in {location.CityName}");
         }
 
         public void StartUpdatingLocation()
@@ -61,6 +60,11 @@ namespace weatherxamarin.Features.UserLocation
 
             LocationManager.DistanceFilter = 8046.72; // ~5 miles to update 
             LocationManager.StartUpdatingLocation();
+        }
+
+        public Location GetCurrentLocation()
+        {
+            return CurrentLocation;
         }
     }
 }

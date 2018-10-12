@@ -21,6 +21,9 @@ namespace weatherxamarin
         {
             base.ViewDidLoad();
             CreateRefreshControl();
+
+            Presenter = new CurrentForecastPresenter(this);
+            Presenter.start();
         }
 
         private void CreateRefreshControl() {
@@ -36,6 +39,11 @@ namespace weatherxamarin
             CityLabel.Hidden = visible;
             TemperatureLabel.Hidden = visible;
             SummaryLabel.Hidden = visible;
+        }
+
+        public void RenderLocality(string locality)
+        {
+            CityLabel.Text = locality;
         }
 
         public void RenderLoadingIndicator()
@@ -67,5 +75,6 @@ namespace weatherxamarin
             LoadingIndicator.RemoveFromSuperview();
             UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
         }
+
     }
 }

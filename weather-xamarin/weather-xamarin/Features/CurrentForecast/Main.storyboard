@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -27,26 +27,26 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BwQ-lT-ruz">
-                                                <rect key="frame" x="98" y="71" width="179" height="179"/>
+                                                <rect key="frame" x="98" y="79" width="179" height="179"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="BwQ-lT-ruz" secondAttribute="height" multiplier="1:1" id="Tbu-os-Wzp"/>
                                                     <constraint firstAttribute="height" constant="179" id="vtk-75-Znn"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charlottesville" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okA-Ko-zJJ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okA-Ko-zJJ">
                                                 <rect key="frame" x="16" y="45" width="343" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="81" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aun-wC-9y1">
-                                                <rect key="frame" x="16" y="258" width="343" height="36"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aun-wC-9y1">
+                                                <rect key="frame" x="16" y="266" width="343" height="36"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RI-lv-7AB">
-                                                <rect key="frame" x="16" y="294" width="343" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RI-lv-7AB">
+                                                <rect key="frame" x="16" y="302" width="343" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="5RI-lv-7AB" secondAttribute="trailing" constant="16" id="5dc-sk-PIl"/>
-                                            <constraint firstItem="BwQ-lT-ruz" firstAttribute="top" secondItem="okA-Ko-zJJ" secondAttribute="bottom" id="5zA-8s-bQx"/>
+                                            <constraint firstItem="BwQ-lT-ruz" firstAttribute="top" secondItem="okA-Ko-zJJ" secondAttribute="bottom" constant="8" id="5zA-8s-bQx"/>
                                             <constraint firstItem="BwQ-lT-ruz" firstAttribute="centerX" secondItem="iK0-zD-8j4" secondAttribute="centerX" id="9Xj-jb-img"/>
                                             <constraint firstAttribute="trailing" secondItem="okA-Ko-zJJ" secondAttribute="trailing" constant="16" id="Fak-ae-YbT"/>
                                             <constraint firstAttribute="height" constant="1500" id="Lc6-JP-TUD"/>

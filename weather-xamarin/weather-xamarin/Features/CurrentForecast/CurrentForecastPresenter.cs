@@ -10,6 +10,7 @@ namespace weatherxamarin.Features.CurrentWeather
     {
         void RenderLoadingIndicator();
         void RenderLabelsAreHidden(bool hidden);
+        void RenderLocality(string locality);
         void RenderWeatherSummary(string iconName, double temperature, string summary);
         void StopLoadingIndicator();
     }
@@ -25,7 +26,7 @@ namespace weatherxamarin.Features.CurrentWeather
             this.View = View;
         }
 
-        public void start()
+        public void Start()
         {
             Interactor = new CurrentForecastInteractor();
 
@@ -46,18 +47,35 @@ namespace weatherxamarin.Features.CurrentWeather
 
         public async void OnUserRefresh() {
             View.RenderLoadingIndicator();
+            Location currentLocation = LocationInteractor.GetCurrentLocation();
 
-            // TODO add routine for interactor to use last location  
-            CurrentForecast forecast = await Interactor.GetCurrentForecast(location.Latitude, location.Longitude);
-            View.RenderWeatherSummary(forecast.icon, forecast.temperature, forecast.summary);
-            View.RenderLabelsAreHidden(false);
-        }
+            /* 
+             * Is this the best way to check, or would an async getter be better? 
+             * Currently, bailing here achieves the same result, as the UI is updated
+             * by the ILocationUpdateHandler. But I'm not quite sure if bailing
+             * here is antipattern or not.
+             */
+            if (currentLocation == null)
+            {
+                return;
+            }
 
-        public async void OnLocationChanged(Location location)
-        {
-            CurrentForecast forecast = await Interactor.GetCurrentForecast(location.Latitude, location.Longitude);
+            CurrentForecast forecast = await Interactor.GetCurrentForecast(currentLocation.Latitude, currentLocation.Longitude);
+
             View.RenderWeatherSummary(forecast.icon, forecast.temperature, forecast.summary);
             View.StopLoadingIndicator();
+        }
+
+
+        // ILocationUpdate Handler methods
+
+        public async void OnLocationChanged(Location newLocation)
+        {
+            CurrentForecast forecast = await Interactor.GetCurrentForecast(newLocation.Latitude, newLocation.Longitude);
+            View.RenderWeatherSummary(forecast.icon, forecast.temperature, forecast.summary);
+            View.RenderLocality(newLocation.CityName);
+            View.StopLoadingIndicator();
+            View.RenderLabelsAreHidden(false);
         }
     }
 }
