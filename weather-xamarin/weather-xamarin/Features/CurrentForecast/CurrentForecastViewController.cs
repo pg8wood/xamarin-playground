@@ -23,12 +23,13 @@ namespace weatherxamarin
             CreateRefreshControl();
 
             Presenter = new CurrentForecastPresenter(this);
-            Presenter.start();
+            Presenter.Start();
         }
 
         private void CreateRefreshControl() {
             RefreshControl = new UIRefreshControl();
             RefreshControl.AddTarget(OnUserRefresh, UIControlEvent.ValueChanged);
+            ScrollView.AddSubview(RefreshControl);
         }
 
         private void OnUserRefresh(Object sender, EventArgs e) {
@@ -40,7 +41,6 @@ namespace weatherxamarin
             TemperatureLabel.Hidden = visible;
             SummaryLabel.Hidden = visible;
         }
-
         public void RenderLocality(string locality)
         {
             CityLabel.Text = locality;
@@ -72,6 +72,7 @@ namespace weatherxamarin
 
         public void StopLoadingIndicator()
         {
+            RefreshControl.EndRefreshing();
             LoadingIndicator.RemoveFromSuperview();
             UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
         }

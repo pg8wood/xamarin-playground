@@ -17,7 +17,7 @@ namespace weatherxamarin.Features.CurrentWeather
 
     public class CurrentForecastPresenter: ILocationUpdateHandler
     {
-        private ICurrentForecastView View;
+        private readonly ICurrentForecastView View;
         private CurrentForecastInteractor Interactor;
         private ILocationManager LocationInteractor;
 
@@ -46,7 +46,6 @@ namespace weatherxamarin.Features.CurrentWeather
         }
 
         public async void OnUserRefresh() {
-            View.RenderLoadingIndicator();
             Location currentLocation = LocationInteractor.GetCurrentLocation();
 
             /* 
