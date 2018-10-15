@@ -36,10 +36,10 @@ namespace weatherxamarin
             Presenter.OnUserRefresh();
         }
 
-        public void RenderLabelsAreHidden(bool visible) {
-            CityLabel.Hidden = visible;
-            TemperatureLabel.Hidden = visible;
-            SummaryLabel.Hidden = visible;
+        public void HideLabels(bool hidden) {
+            CityLabel.Hidden = hidden;
+            TemperatureLabel.Hidden = hidden;
+            SummaryLabel.Hidden = hidden;
         }
         public void RenderLocality(string locality)
         {
