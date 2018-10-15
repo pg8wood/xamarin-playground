@@ -38,12 +38,14 @@ namespace weatherxamarin
 
         public void HideLabels(bool hidden) {
             CityLabel.Hidden = hidden;
+            SubLocalityLabel.Hidden = hidden;
             TemperatureLabel.Hidden = hidden;
             SummaryLabel.Hidden = hidden;
         }
-        public void RenderLocality(string locality)
+        public void RenderLocationName(string cityName, string subLocalityName)
         {
-            CityLabel.Text = locality;
+            CityLabel.Text = cityName;
+            SubLocalityLabel.Text = subLocalityName;
         }
 
         public void RenderLoadingIndicator()

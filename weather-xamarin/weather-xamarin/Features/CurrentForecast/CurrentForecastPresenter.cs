@@ -10,7 +10,7 @@ namespace weatherxamarin.Features.CurrentWeather
     {
         void HideLabels(bool hidden);
         void RenderLoadingIndicator();
-        void RenderLocality(string locality);
+        void RenderLocationName(string cityName, string subLocalityName);
         void RenderWeatherSummary(string iconName, double temperature, string summary);
         void StopLoadingIndicator();
     }
@@ -72,7 +72,7 @@ namespace weatherxamarin.Features.CurrentWeather
         {
             CurrentForecast forecast = await Interactor.GetCurrentForecast(newLocation.Latitude, newLocation.Longitude);
             View.RenderWeatherSummary(forecast.icon, forecast.temperature, forecast.summary);
-            View.RenderLocality(newLocation.CityName);
+            View.RenderLocationName(newLocation.CityName, newLocation.SubLocalityName);
             View.StopLoadingIndicator();
             View.HideLabels(false);
         }

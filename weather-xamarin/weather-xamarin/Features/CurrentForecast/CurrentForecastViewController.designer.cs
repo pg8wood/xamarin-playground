@@ -23,6 +23,10 @@ namespace weatherxamarin
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel SubLocalityLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel SummaryLabel { get; set; }
 
         [Outlet]
@@ -43,6 +47,11 @@ namespace weatherxamarin
             if (ScrollView != null) {
                 ScrollView.Dispose ();
                 ScrollView = null;
+            }
+
+            if (SubLocalityLabel != null) {
+                SubLocalityLabel.Dispose ();
+                SubLocalityLabel = null;
             }
 
             if (SummaryLabel != null) {

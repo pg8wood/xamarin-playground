@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Current Forecast View Controller-->
@@ -22,32 +21,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfP-mp-MkT">
-                                <rect key="frame" x="0.0" y="20" width="375" height="792"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-zD-8j4" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BwQ-lT-ruz">
-                                                <rect key="frame" x="98" y="79" width="179" height="179"/>
+                                                <rect key="frame" x="98" y="102.33333333333334" width="179" height="179.00000000000003"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="BwQ-lT-ruz" secondAttribute="height" multiplier="1:1" id="Tbu-os-Wzp"/>
                                                     <constraint firstAttribute="height" constant="179" id="vtk-75-Znn"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okA-Ko-zJJ">
-                                                <rect key="frame" x="16" y="45" width="343" height="26"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okA-Ko-zJJ">
+                                                <rect key="frame" x="16" y="45" width="343" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SubLocality" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6c-6W-FTW" userLabel="Sublocality">
+                                                <rect key="frame" x="16" y="75" width="343" height="19.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aun-wC-9y1">
-                                                <rect key="frame" x="16" y="266.5" width="343" height="20.5"/>
+                                                <rect key="frame" x="16" y="289.33333333333331" width="343" height="36"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RI-lv-7AB">
-                                                <rect key="frame" x="16" y="287" width="343" height="21.5"/>
+                                                <rect key="frame" x="16" y="325.33333333333331" width="343" height="21.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -56,15 +61,18 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="5RI-lv-7AB" secondAttribute="trailing" constant="16" id="5dc-sk-PIl"/>
-                                            <constraint firstItem="BwQ-lT-ruz" firstAttribute="top" secondItem="okA-Ko-zJJ" secondAttribute="bottom" constant="8" id="5zA-8s-bQx"/>
                                             <constraint firstItem="BwQ-lT-ruz" firstAttribute="centerX" secondItem="iK0-zD-8j4" secondAttribute="centerX" id="9Xj-jb-img"/>
                                             <constraint firstAttribute="trailing" secondItem="okA-Ko-zJJ" secondAttribute="trailing" constant="16" id="Fak-ae-YbT"/>
                                             <constraint firstAttribute="height" constant="1500" id="Lc6-JP-TUD"/>
+                                            <constraint firstAttribute="trailing" secondItem="h6c-6W-FTW" secondAttribute="trailing" constant="16" id="Pum-CK-1rJ"/>
                                             <constraint firstItem="okA-Ko-zJJ" firstAttribute="leading" secondItem="iK0-zD-8j4" secondAttribute="leading" constant="16" id="SlP-6A-mWD"/>
                                             <constraint firstAttribute="trailing" secondItem="aun-wC-9y1" secondAttribute="trailing" constant="16" id="Unp-mp-B4I"/>
+                                            <constraint firstItem="h6c-6W-FTW" firstAttribute="top" secondItem="okA-Ko-zJJ" secondAttribute="bottom" id="VgA-f5-Ri6"/>
+                                            <constraint firstItem="h6c-6W-FTW" firstAttribute="leading" secondItem="iK0-zD-8j4" secondAttribute="leading" constant="16" id="Ziv-YM-1Ue"/>
                                             <constraint firstItem="aun-wC-9y1" firstAttribute="top" secondItem="BwQ-lT-ruz" secondAttribute="bottom" constant="8" id="ach-DR-Hzp"/>
                                             <constraint firstItem="5RI-lv-7AB" firstAttribute="leading" secondItem="iK0-zD-8j4" secondAttribute="leading" constant="16" id="bpE-J6-zOM"/>
                                             <constraint firstItem="5RI-lv-7AB" firstAttribute="top" secondItem="aun-wC-9y1" secondAttribute="bottom" id="fln-d0-KMJ"/>
+                                            <constraint firstItem="BwQ-lT-ruz" firstAttribute="top" secondItem="h6c-6W-FTW" secondAttribute="bottom" constant="8" id="ieP-C9-nXU"/>
                                             <constraint firstItem="aun-wC-9y1" firstAttribute="leading" secondItem="iK0-zD-8j4" secondAttribute="leading" constant="16" id="kTZ-T0-Dcq"/>
                                             <constraint firstItem="okA-Ko-zJJ" firstAttribute="top" secondItem="iK0-zD-8j4" secondAttribute="top" constant="45" id="lSM-jG-cge"/>
                                         </constraints>
@@ -89,15 +97,16 @@
                     </view>
                     <connections>
                         <outlet property="CityLabel" destination="okA-Ko-zJJ" id="name-outlet-okA-Ko-zJJ"/>
+                        <outlet property="ScrollView" destination="SfP-mp-MkT" id="name-outlet-SfP-mp-MkT"/>
+                        <outlet property="SubLocalityLabel" destination="h6c-6W-FTW" id="name-outlet-h6c-6W-FTW"/>
                         <outlet property="SummaryLabel" destination="5RI-lv-7AB" id="name-outlet-5RI-lv-7AB"/>
                         <outlet property="TemperatureLabel" destination="aun-wC-9y1" id="name-outlet-aun-wC-9y1"/>
                         <outlet property="WeatherIcon" destination="BwQ-lT-ruz" id="name-outlet-BwQ-lT-ruz"/>
-                        <outlet property="ScrollView" destination="SfP-mp-MkT" id="name-outlet-SfP-mp-MkT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-0.8" y="0.0"/>
+            <point key="canvasLocation" x="-0.80000000000000004" y="0.0"/>
         </scene>
     </scenes>
 </document>

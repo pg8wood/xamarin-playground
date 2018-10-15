@@ -39,11 +39,11 @@ namespace weatherxamarin.Features.UserLocation
                 }
 
                 CLPlacemark placemark = placemarks[0];
-                string localityName = $"{placemark.SubLocality} {placemark.Locality}";
 
                 Location location = new Location(newLocation.Coordinate.Latitude,
                                                  newLocation.Coordinate.Longitude,
-                                                 localityName);
+                                                 placemark.Locality,
+                                                 placemark.SubLocality);
 
                 CurrentLocation = location;
                 Handler.OnLocationChanged(location);
